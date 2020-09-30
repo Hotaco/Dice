@@ -1,5 +1,6 @@
 int total;
-public int highscore;
+int highscore;
+boolean pressed = false;
 
 void setup()
 {
@@ -21,12 +22,25 @@ void draw()
     }
   }
   drawScore();
+  total = 0;
+  
+  if(keyCode == 32 && pressed == false)
+  {
+   redraw();
+   loop();
+   pressed = true;
+  }
 }
 
 void mousePressed()
 {
-  total = 0;
   redraw();
+  noLoop();
+  if(pressed == true)
+  {
+  keyCode = 34;
+  pressed = false;
+  }
 }
 
 void drawScore()
